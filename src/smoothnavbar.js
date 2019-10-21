@@ -1,6 +1,6 @@
 
 export default function hideonscroll(selector) {
-  
+
   let find = (selector, context) => {
     return (context || document).querySelector(selector);
   };
@@ -34,29 +34,9 @@ export default function hideonscroll(selector) {
   let previousScroll = -1;
   let dir = 1; // up
 
-  let calculations0 = () => {
+  let calculations = () => {
     if (window.pageYOffset > previousScroll) {
       // Action on scroll down
-      if (dir == 1 && target.offsetTop < window.pageYOffset - offset) {
-        stylePLT(target, 'absolute', 0, window.pageYOffset);
-        dir = 0;
-      }
-    } else {
-      if (dir == 0 && target.offsetTop + offset < window.pageYOffset) {
-        stylePLT(target, 'absolute', 0, window.pageYOffset - offset);
-        dir = 1;
-      } else if (target.offsetTop >= window.pageYOffset) {
-        stylePLT(target, 'fixed', 0, 0);
-        dir = 1;
-      }
-    }
-    previousScroll = window.pageYOffset;
-  }
-
-  let calculations1 = () => {
-    if (window.pageYOffset > previousScroll) {
-      // Action on scroll down
-//      if
       if (overlay.scrollHeight > window.pageYOffset + offset) {
         overlay.style.height = (window.pageYOffset + offset) + 'px';
       }
@@ -68,13 +48,9 @@ export default function hideonscroll(selector) {
     }
     previousScroll = window.pageYOffset;
   }
-  let calculations = calculations0;
-  if (Modernizr.csspositionsticky) {
-    target.style.position = 'sticky';
-    if (!target.style.position) {
-      target.style.position = '-webkit-sticky';
-      }
-    calculations = calculations1;
+  target.style.position = 'sticky';
+  if (!target.style.position) {
+    target.style.position = '-webkit-sticky';
   }
 
   let loop = () => {
