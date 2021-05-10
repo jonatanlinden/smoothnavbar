@@ -1,6 +1,7 @@
 {
   "name": "smoothnavbar",
   "version": "0.0.2",
+  "private": true,
   "description": "",
   "main": "lib/smoothnavbar.js",
   "scripts": {
